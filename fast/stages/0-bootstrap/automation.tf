@@ -23,8 +23,7 @@ module "automation-project" {
   parent = coalesce(
     var.project_parent_ids.automation, "organizations/${var.organization.id}"
   )
-  prefix   = var.prefix
-  universe = var.universe
+  prefix = var.prefix
   contacts = (
     var.bootstrap_user != null || var.essential_contacts == null
     ? {}

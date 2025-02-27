@@ -18,8 +18,8 @@
 
 # yaml-language-server: $schema=../../schemas/org-policies.schema.json
 
-# gcp.resourceLocations:
-#   rules:
-#   - allow:
-#       values:
-#       - "in:europe-locations"
+gcp.resourceLocations:
+  rules:
+  - allow:
+      values:
+      - "in:europe-locations"

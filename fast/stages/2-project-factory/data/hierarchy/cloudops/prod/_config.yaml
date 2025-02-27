@@ -12,21 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-# sample subset of useful organization policies, edit to suit requirements
-# start of document (---) avoids errors if the file only contains comments
+# yaml-language-server: $schema=../../../../schemas/folder.schema.json
 
-# yaml-language-server: $schema=../../schemas/org-policies.schema.json
-
-storage.uniformBucketLevelAccess:
-  rules:
-    - enforce: true
-
-storage.publicAccessPrevention:
-  rules:
-    - enforce: true
-
-
-storage.secureHttpTransport:
-  rules:
-    - enforce: true
+name: Production
+tag_bindings:
+  environment: environment/production
+# iam_by_principals:
+#   "group:gcp.billing.tentwentyone@tentwentyone.io":
+#     - roles/viewer
+#   "group:gcp-developers@tentwentyone.io":
+#     - roles/editor
+#   "group:gcp-organization-admins@tentwentyone.io":
+#     - roles/owner
+#   "group:gcp-logging-monitoring-viewers@tentwentyone.io":
+#     - roles/owner

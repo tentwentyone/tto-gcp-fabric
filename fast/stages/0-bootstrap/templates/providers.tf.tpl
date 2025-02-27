@@ -18,22 +18,16 @@ terraform {
   backend "gcs" {
     bucket                      = "${bucket}"
     impersonate_service_account = "${sa}"
-    %{~ for k, v in coalesce(backend_extra, {}) ~}
-    ${k} = ${jsonencode(v)}
-    %{~ endfor ~}
+    %{~ if backend_extra != null ~}
+    ${indent(4, backend_extra)}
+    %{~ endif ~}
   }
 }
 provider "google" {
   impersonate_service_account = "${sa}"
-  %{~ for k, v in coalesce(provider_extra, {}) ~}
-  ${k} = ${jsonencode(v)}
-  %{~ endfor ~}
 }
 provider "google-beta" {
   impersonate_service_account = "${sa}"
-  %{~ for k, v in coalesce(provider_extra, {}) ~}
-  ${k} = ${jsonencode(v)}
-  %{~ endfor ~}
 }
 
 # end provider.tf for ${name}

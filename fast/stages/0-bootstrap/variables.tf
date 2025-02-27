@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2024 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -121,12 +121,6 @@ variable "environments" {
     ])
     error_message = "Environment names can only contain letters numbers dashes or spaces."
   }
-  validation {
-    condition = alltrue([
-      for k, v in var.environments : (length(coalesce(v.short_name, k)) <= 4)
-    ])
-    error_message = "If environment key is longer than 4 characters, provide short_name that is at most 4 characters long."
-  }
 }
 
 variable "essential_contacts" {
@@ -138,10 +132,9 @@ variable "essential_contacts" {
 variable "factories_config" {
   description = "Configuration for the resource factories or external data."
   type = object({
-    custom_constraints = optional(string, "data/custom-constraints")
-    custom_roles       = optional(string, "data/custom-roles")
-    org_policies       = optional(string, "data/org-policies")
-    org_policies_iac   = optional(string, "data/org-policies-iac")
+    custom_roles     = optional(string, "data/custom-roles")
+    org_policies     = optional(string, "data/org-policies")
+    org_policies_iac = optional(string, "data/org-policies-iac")
   })
   nullable = false
   default  = {}
@@ -151,7 +144,7 @@ variable "groups" {
   # https://cloud.google.com/docs/enterprise/setup-checklist
   description = "Group names or IAM-format principals to grant organization-level permissions. If just the name is provided, the 'group:' principal and organization domain are interpolated."
   type = object({
-    gcp-billing-admins      = optional(string, "gcp-billing-admins")
+    gcp-billing-admins      = optional(string, "gcp.billing.tentwentyone")
     gcp-devops              = optional(string, "gcp-devops")
     gcp-network-admins      = optional(string, "gcp-vpc-network-admins")
     gcp-organization-admins = optional(string, "gcp-organization-admins")
@@ -256,9 +249,9 @@ variable "log_sinks" {
   validation {
     condition = alltrue([
       for k, v in var.log_sinks :
-      contains(["bigquery", "logging", "project", "pubsub", "storage"], v.type)
+      contains(["bigquery", "logging", "pubsub", "storage"], v.type)
     ])
-    error_message = "Type must be one of 'bigquery', 'logging', 'project', 'pubsub', 'storage'."
+    error_message = "Type must be one of 'bigquery', 'logging', 'pubsub', 'storage'."
   }
 }
 
@@ -266,8 +259,12 @@ variable "org_policies_config" {
   description = "Organization policies customization."
   type = object({
     iac_policy_member_domains = optional(list(string))
-    import_defaults           = optional(bool, false)
-    tag_name                  = optional(string, "org-policies")
+    constraints = optional(object({
+      allowed_essential_contact_domains = optional(list(string), [])
+      allowed_policy_member_domains     = optional(list(string), [])
+    }), {})
+    import_defaults = optional(bool, false)
+    tag_name        = optional(string, "org-policies")
     tag_values = optional(map(object({
       description = optional(string, "Managed by the Terraform organization module.")
       iam         = optional(map(list(string)), {})
@@ -342,16 +339,6 @@ variable "resource_names" {
   })
   nullable = false
   default  = {}
-}
-
-variable "universe" {
-  description = "Target GCP universe."
-  type = object({
-    domain               = string
-    prefix               = string
-    unavailable_services = optional(list(string), [])
-  })
-  default = null
 }
 
 variable "workforce_identity_providers" {

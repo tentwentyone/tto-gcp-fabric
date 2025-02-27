@@ -12,10 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# yaml-language-server: $schema=../../schemas/project.schema.json
+# yaml-language-server: $schema=../../schemas/fast-stage3.schema.json
 
-parent: team-b/dev
-shared_vpc_service_config:
-  host_project: dev-spoke-0
-  network_users:
-    - gcp-devops
+short_name: gke
+environment: prod
+folder_config:
+  name: Production
+  parent_id: gke
+stage2_iam:
+  networking:
+    sa_roles:
+      ro:
+        - roles/dns.reader
+      rw:
+        - roles/dns.admin
