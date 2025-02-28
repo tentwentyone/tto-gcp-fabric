@@ -1,0 +1,1 @@
+../fast-config/providers/1-resman-providers.tf

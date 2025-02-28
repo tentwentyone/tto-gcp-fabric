@@ -1,0 +1,1 @@
+/home/diogo/fast-config/2-networking.auto.tfvars
