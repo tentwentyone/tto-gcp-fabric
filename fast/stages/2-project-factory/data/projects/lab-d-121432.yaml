@@ -16,7 +16,7 @@
 
 parent: cloudops/dev
 shared_vpc_service_config:
-  host_project: dev-spoke-0
+  host_project: ten21-dev-net-spoke-0
   network_users:
     - gcp-devops
 

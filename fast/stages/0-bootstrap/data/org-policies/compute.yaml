@@ -24,11 +24,11 @@ compute.disableGuestAttributesAccess:
 
 compute.disableNestedVirtualization:
   rules:
-  - enforce: true
+    - enforce: true
 
 compute.disableSerialPortAccess:
   rules:
-  - enforce: true    
+    - enforce: true
 
 compute.requireOsLogin:
   rules:
@@ -46,8 +46,8 @@ compute.skipDefaultNetworkCreation:
 
 # compute.setNewProjectDefaultToZonalDNSOnly:
 #   rules:
-#   - enforce: true  
-  
+#   - enforce: true
+
 # only allow GCP images by default
 # compute.trustedImageProjects:
 #   rules:
@@ -128,5 +128,5 @@ compute.vmExternalIpAccess:
 
 compute.vmCanIpForward:
   rules:
-  - deny:
-      all: true
+    - deny:
+        all: true

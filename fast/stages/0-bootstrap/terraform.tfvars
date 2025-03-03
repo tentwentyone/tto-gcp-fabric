@@ -1,8 +1,8 @@
 # use `gcloud beta billing accounts list`
 # if you have too many accounts, check the Cloud Console :)
 billing_account = {
-  id          = "01C8D5-E4EA95-F2D624"
-  s_org_level = false
+  id           = "01C8D5-E4EA95-F2D624"
+  is_org_level = false
 }
 
 # locations for GCS, BigQuery, and logging buckets created here

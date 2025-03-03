@@ -25,7 +25,6 @@ provider "google" {
 }
 provider "google-beta" {
   impersonate_service_account = "ten21-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
-  version                     = "6.20.0"
 }
 
 # end provider.tf for project_factory
