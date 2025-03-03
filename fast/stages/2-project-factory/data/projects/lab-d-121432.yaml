@@ -63,27 +63,25 @@ iam_by_principals:
     - roles/viewer
   "group:gcp-vpc-network-admins@tentwentyone.io":
     - roles/viewer
-# iam:
-#   roles/owner:
-#     - rw
-#   roles/viewer:
-#     - ro
-# automation:
-#   project: ten21-prod-iac-core-0
-#   service_accounts:
-#     rw:
-#       description: Read/write automation sa for team cloudops.
-#     ro:
-#       description: Read-only automation sa for team cloudops.
-#   buckets:
-#     state:
-#       description: Terraform state bucket for team cloudops.
-#       iam:
-#         # service accounts can use short name substitutions from context
-#         roles/storage.objectCreator:
-#           - rw
-#         roles/storage.objectViewer:
-#           - gcp-devops
-#           - rw
-#           - ro
-
+iam:
+  roles/owner:
+    - rw
+  roles/viewer:
+    - ro
+automation:
+  # no context is possible here
+  # use the complete project id
+  project: ten21-prod-iac-core-0
+  service_accounts:
+    rw:
+      description: Read/write automation sa for team cloudops.
+    ro:
+      description: Read-only automation sa for team cloudops.
+  bucket:
+    description: Automation bucket for team cloudops.
+    iam:
+      roles/storage.objectCreator:
+        - rw
+      roles/storage.objectViewer:
+        - rw
+        - ro
