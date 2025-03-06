@@ -14,6 +14,7 @@
 
 # yaml-language-server: $schema=../../schemas/project.schema.json
 
+# cg.tentwentyone.io
 parent: cloudops/dev
 shared_vpc_service_config:
   host_project: ten21-dev-net-spoke-0
@@ -69,8 +70,6 @@ iam:
   roles/viewer:
     - ro
 automation:
-  # no context is possible here
-  # use the complete project id
   project: ten21-prod-iac-core-0
   service_accounts:
     rw:

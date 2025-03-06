@@ -19,6 +19,47 @@ organization = {
   customer_id = "C01oeotpq"
 }
 
+
 outputs_location = "~/fast-config"
 
 prefix = "ten21"
+
+vpc_configs = {
+  dev = {
+    mtu = 1500
+    cloudnat = {
+      enable = false
+    }
+    dns = {
+      create_inbound_policy = false
+      enable_logging        = false
+    }
+    firewall = {
+      create_policy       = false
+      policy_has_priority = false
+      use_classic         = true
+    }
+  }
+  landing = {
+    mtu = 1500
+    cloudnat = {
+      enable = false
+    }
+    firewall = {
+      create_policy       = false
+      policy_has_priority = false
+      use_classic         = true
+    }
+  }
+  prod = {
+    mtu = 1500
+    cloudnat = {
+      enable = false
+    }
+    firewall = {
+      create_policy       = false
+      policy_has_priority = false
+      use_classic         = true
+    }
+  }
+}
