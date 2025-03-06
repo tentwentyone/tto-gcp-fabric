@@ -129,7 +129,6 @@ variable "zone_config" {
     private = optional(object({
       client_networks             = list(string)
       service_directory_namespace = optional(string)
-      reverse_managed             = optional(bool, false)
     }))
   })
   validation {
@@ -143,3 +142,5 @@ variable "zone_config" {
   }
   default = null
 }
+
+
