@@ -1,0 +1,67 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# yaml-language-server: $schema=../../schemas/project.schema.json
+
+name: wshop01-p-154457
+parent: cloudops/prod
+shared_vpc_service_config:
+  host_project: ten21-prod-net-spoke-0
+  network_users:
+    - gcp-devops
+
+billing_account: "01C8D5-E4EA95-F2D624"
+
+dns:
+  private_zones:
+    - name: wshop01-p.cg.tentwentyone.io.
+      dns_name: wshop01-p-private
+      description: Private DNS zone for wshop01-p.cg.tentwentyone.io.
+      visibility: private
+  public_zones:
+    - name: wshop01-p.cg.tentwentyone.io.
+      dns_name: wshop01-p-public
+      description: Public DNS zone for wshop01-p.cg.tentwentyone.io.
+
+labels:
+  team: gcp-cloudops
+
+contacts:
+  gcp.billing.tentwentyone@tentwentyone.io:
+    - BILLING
+
+iam_by_principals:
+  "group:tto-workshop-admins@tentwentyone.io":
+    - roles/viewer
+    - roles/resourcemanager.projectIamAdmin
+iam:
+  roles/viewer:
+    - rw
+automation:
+  project: ten21-prod-iac-core-0
+  service_accounts:
+    rw:
+      description: Read/write automation sa for team cloudops.
+      iam_bindings:
+        binding:
+          members:
+            - "group:tto-workshop-iac-writers@tentwentyone.io"
+          role: "roles/iam.serviceAccountTokenCreator"
+  bucket:
+    description: Automation bucket for team cloudops.
+    iam:
+      roles/storage.objectCreator:
+        - rw
+      roles/storage.objectViewer:
+        - rw

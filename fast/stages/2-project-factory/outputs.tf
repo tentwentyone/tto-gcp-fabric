@@ -14,28 +14,47 @@
  * limitations under the License.
  */
 
+
+output "buckets" {
+  description = "Created buckets."
+  value = {
+    for k, v in module.projects.buckets : k => v
+  }
+}
+
 output "projects" {
   description = "Created projects."
-  value       = module.projects.projects
+  value = {
+    for k, v in module.projects.projects : k => {
+      id         = v.project_id
+      number     = v.number
+      automation = v.automation
+    }
+  }
 }
 
 output "service_accounts" {
   description = "Created service accounts."
-  value       = module.projects.service_accounts
+  value = {
+    for k, v in module.projects.service_accounts : k => {
+      email     = v.email
+      iam_email = v.iam_email
+    }
+  }
 }
 
 # generate tfvars file for subsequent stages
 
-resource "local_file" "providers" {
-  for_each        = var.outputs_location == null ? {} : { for v in local.project_provider_data : v.key => v }
-  file_permission = "0644"
-  filename        = "${pathexpand(var.outputs_location)}/providers/${var.stage_name}/${each.key}-providers.tf"
-  content         = templatefile("templates/providers.tf.tpl", each.value)
-}
+# resource "local_file" "providers" {
+#   for_each        = var.outputs_location == null ? {} : { for v in local.project_provider_data : v.key => v }
+#   file_permission = "0644"
+#   filename        = "${pathexpand(var.outputs_location)}/providers/${var.stage_name}/${each.key}-providers.tf"
+#   content         = templatefile("templates/providers.tf.tpl", each.value)
+# }
 
-resource "google_storage_bucket_object" "tfvars" {
-  for_each = { for v in local.project_provider_data : v.key => v }
-  bucket   = var.automation.outputs_bucket
-  name     = "providers/${var.stage_name}/${each.key}-providers.tf"
-  content  = templatefile("templates/providers.tf.tpl", each.value)
-}
+# resource "google_storage_bucket_object" "tfvars" {
+#   for_each = { for v in local.project_provider_data : v.key => v }
+#   bucket   = var.automation.outputs_bucket
+#   name     = "providers/${var.stage_name}/${each.key}-providers.tf"
+#   content  = templatefile("templates/providers.tf.tpl", each.value)
+# }

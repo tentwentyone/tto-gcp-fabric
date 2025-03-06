@@ -14,7 +14,7 @@
 
 # yaml-language-server: $schema=../../schemas/project.schema.json
 
-# cg.tentwentyone.io
+name: lab-d-121432
 parent: cloudops/dev
 shared_vpc_service_config:
   host_project: ten21-dev-net-spoke-0
@@ -22,6 +22,17 @@ shared_vpc_service_config:
     - gcp-devops
 
 billing_account: "01C8D5-E4EA95-F2D624"
+
+dns:
+  private_zones:
+    - name: lab-d.cg.tentwentyone.io.
+      dns_name: lab-d-private
+      description: Private DNS zone for lab-d.cg.tentwentyone.io.
+      visibility: private
+  public_zones:
+    - name: lab-d.cg.tentwentyone.io.
+      dns_name: lab-d-public
+      description: Public DNS zone for lab-d.cg.tentwentyone.io.
 
 billing_budgets:
   - budget-dev.yaml
