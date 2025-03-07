@@ -151,7 +151,7 @@ variable "groups" {
   # https://cloud.google.com/docs/enterprise/setup-checklist
   description = "Group names or IAM-format principals to grant organization-level permissions. If just the name is provided, the 'group:' principal and organization domain are interpolated."
   type = object({
-    gcp-billing-admins      = optional(string, "gcp-billing-admins")
+    gcp-billing-admins      = optional(string, "gcp.billing.tentwentyone")
     gcp-devops              = optional(string, "gcp-devops")
     gcp-network-admins      = optional(string, "gcp-vpc-network-admins")
     gcp-organization-admins = optional(string, "gcp-organization-admins")

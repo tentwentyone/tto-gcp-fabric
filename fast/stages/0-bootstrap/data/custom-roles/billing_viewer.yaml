@@ -17,9 +17,12 @@
 name: billingViewer
 includedPermissions:
 - billing.accounts.get
+- billing.accounts.get
+- billing.accounts.getIamPolicy
 - billing.accounts.getIamPolicy
 - billing.accounts.getSpendingInformation
 - billing.accounts.getUsageExportSpec
+- billing.accounts.list
 - billing.accounts.list
 - billing.budgets.get
 - billing.budgets.list

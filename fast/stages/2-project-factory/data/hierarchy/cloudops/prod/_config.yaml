@@ -1,4 +1,4 @@
-# Copyright 2025 Google LLC
+# Copyright 2024 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,15 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# yaml-language-server: $schema=../../schemas/org-policy-custom-constraint.schema.json
+# yaml-language-server: $schema=../../../../schemas/folder.schema.json
 
-custom.disableKubeletReadOnlyPort:
-  resource_types:
-    - container.googleapis.com/Cluster
-  method_types:
-    - CREATE
-    - UPDATE
-  condition: resource.nodeConfig.kubeletConfig.insecureKubeletReadonlyPortEnabled == true
-  action_type: DENY
-  display_name: Disable Kubelet Read-Only Port 10255
-  description: Disallows the use of Kubelet read-only port 10255 to enhance security
+name: Production
+tag_bindings:
+  environment: environment/production
+# iam_by_principals:
+#   "group:gcp.billing.tentwentyone@tentwentyone.io":
+#     - roles/viewer
+#   "group:gcp-developers@tentwentyone.io":
+#     - roles/editor
+#   "group:gcp-organization-admins@tentwentyone.io":
+#     - roles/owner
+#   "group:gcp-logging-monitoring-viewers@tentwentyone.io":
+#     - roles/owner
