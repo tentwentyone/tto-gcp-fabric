@@ -1,5 +1,5 @@
 /**
- * Copyright 2024 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,17 @@
  * limitations under the License.
  */
 
-# tfdoc:file:description Development spoke DNS zones and peerings setup.
+terraform {
+  backend "gcs" {
+    bucket                      = "ten21-prod-resman-pf-0"
+    impersonate_service_account = "ten21-prod-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+  }
+}
+provider "google" {
+  impersonate_service_account = "ten21-prod-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+}
+provider "google-beta" {
+  impersonate_service_account = "ten21-prod-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+}
 
-# GCP-specific environment zone
+# end provider.tf for project-factory-prod
