@@ -23,47 +23,18 @@ shared_vpc_service_config:
 
 billing_account: "01C8D5-E4EA95-F2D624"
 
-billing_budgets:
-  - budget-dev.yaml
-services:
-  - serviceusage.googleapis.com
-  - compute.googleapis.com
-  - logging.googleapis.com
-  - monitoring.googleapis.com
-  - cloudresourcemanager.googleapis.com
-  - iam.googleapis.com
-  - cloudbilling.googleapis.com
-  - container.googleapis.com
-  - servicenetworking.googleapis.com
-
 labels:
   team: gcp-cloudops
 
 contacts:
   gcp.billing.tentwentyone@tentwentyone.io:
     - BILLING
+
 iam_by_principals:
-  "group:gcp.billing.tentwentyone@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-developers@tentwentyone.io":
-    - roles/viewer
   "group:gcp-devops@tentwentyone.io":
     - roles/viewer
-  "group:gcp-hybrid-connectivity-admins@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-logging-monitoring-admins@tentwentyone.io":
-    - roles/viewer
-    - roles/logging.admin
-  "group:gcp-organization-admins@tentwentyone.io":
-    - roles/owner
-  "group:gcp-logging-monitoring-viewers@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-security-admins@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-terraform-workshop@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-vpc-network-admins@tentwentyone.io":
-    - roles/viewer
+    - roles/resourcemanager.projectIamAdmin
+
 iam:
   roles/owner:
     - rw

@@ -1,5 +1,5 @@
 /**
- * Copyright 2022 Google LLC
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
+# ten21-lab-d-121431 697819458995
+
 terraform {
   backend "gcs" {
-    bucket                      = "ten21-dev-resman-pf-0"
-    impersonate_service_account = "ten21-dev-resman-pf-0r@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+    bucket                      = "ten21-lab-d-121431-tf-state"
+    impersonate_service_account = "ten21-lab-d-121431-rw@ten21-prod-iac-core-0.iam.gserviceaccount.com"
   }
 }
 provider "google" {
-  impersonate_service_account = "ten21-dev-resman-pf-0r@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+  impersonate_service_account = "ten21-lab-d-121431-rw@ten21-prod-iac-core-0.iam.gserviceaccount.com"
 }
 provider "google-beta" {
-  impersonate_service_account = "ten21-dev-resman-pf-0r@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+  impersonate_service_account = "ten21-lab-d-121431-rw@ten21-prod-iac-core-0.iam.gserviceaccount.com"
 }
-
-# end provider.tf for project-factory-dev

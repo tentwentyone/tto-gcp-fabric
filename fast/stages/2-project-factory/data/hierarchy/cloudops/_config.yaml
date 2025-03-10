@@ -19,37 +19,3 @@ parent: teams
 # iam_by_principals:
 #   "group:team-a-admins@example.com":
 #     - roles/viewer
-
-iam_by_principals:
-  "group:gcp.billing.tentwentyone@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-developers@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-devops@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-hybrid-connectivity-admins@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-logging-monitoring-admins@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-organization-admins@tentwentyone.io":
-    - roles/owner
-  "group:gcp-logging-monitoring-viewers@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-security-admins@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-terraform-workshop@tentwentyone.io":
-    - roles/viewer
-  "group:gcp-vpc-network-admins@tentwentyone.io":
-    - roles/viewer
-
-iam:
-  "roles/owner":
-    - project-factory
-  "roles/resourcemanager.folderAdmin":
-    - project-factory
-  "roles/resourcemanager.projectCreator":
-    - project-factory
-  "roles/resourcemanager.tagUser":
-    - project-factory
-# tag_bindings:
-#   context: context/project-factory

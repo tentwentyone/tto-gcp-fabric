@@ -16,15 +16,15 @@
 
 terraform {
   backend "gcs" {
-    bucket                      = "ten21-resman-pf-0"
-    impersonate_service_account = "ten21-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+    bucket                      = "ten21-prod-resman-pf-0"
+    impersonate_service_account = "ten21-prod-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
   }
 }
 provider "google" {
-  impersonate_service_account = "ten21-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+  impersonate_service_account = "ten21-prod-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
 }
 provider "google-beta" {
-  impersonate_service_account = "ten21-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
+  impersonate_service_account = "ten21-prod-resman-pf-0@ten21-prod-iac-core-0.iam.gserviceaccount.com"
 }
 
-# end provider.tf for project_factory
+# end provider.tf for project-factory
