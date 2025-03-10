@@ -1,0 +1,12 @@
+display_name: 100 dollars in current spend
+budget_notification_channels:
+amount:
+  units: 100
+projects:
+  - projects/813099998992
+filter:
+  period:
+    calendar: MONTH
+threshold_rules:
+  - percent: 0.5
+  - percent: 0.75

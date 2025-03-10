@@ -12,14 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-# sample subset of useful organization policies, edit to suit requirements
-# start of document (---) avoids errors if the file only contains comments
+# yaml-language-server: $schema=../../../schemas/folder.schema.json
 
-# yaml-language-server: $schema=../../schemas/org-policies.schema.json
-
-gcp.resourceLocations:
-  rules:
-  - allow:
-      values:
-      - "in:europe-locations"
+name: CloudOps
+parent: teams
+# iam_by_principals:
+#   "group:team-a-admins@example.com":
+#     - roles/viewer

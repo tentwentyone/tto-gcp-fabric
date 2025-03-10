@@ -234,7 +234,7 @@ module "stage2-sa-rw" {
     ])
   }
   iam_project_roles = {
-    (var.automation.project_id) = ["roles/serviceusage.serviceUsageConsumer"]
+    (var.automation.project_id) = ["roles/serviceusage.serviceUsageConsumer", "roles/iam.serviceAccountAdmin", "roles/storage.admin"]
   }
   iam_storage_roles = {
     (var.automation.outputs_bucket) = ["roles/storage.objectAdmin"]
